@@ -3,7 +3,7 @@ email:              measureit@gmail.com
 description:        A Blog Theme by Start Bootstrap
 author:             Start Bootstrap
 baseurl:            ""
-url:                ""
+url:                "https://measureit.github.io"
 
 # Social Profiles
 twitter_username:   SBootstrap
