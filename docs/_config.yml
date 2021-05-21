@@ -1,16 +1,16 @@
 title:              Measure IT
-email:              measureit@gmail.com
-description:        A Blog Theme by Start Bootstrap
-author:             Start Bootstrap
+email:              measureit.dev@gmail.com
+description:        Spread coding experience is our goal.
+author:             Jarosław Kurdzieko
 baseurl:            ""
 url:                "https://measureit.github.io"
 
 # Social Profiles
-twitter_username:   SBootstrap
-github_username:    StartBootstrap
-facebook_username:  StartBootstrap
+twitter_username:   
+github_username:    jkurdzieko
+facebook_username:  
 instagram_username:  
-linkedin_username:
+linkedin_username: jaroslaw.kurdzieko@gmail.com
 
 # Add your google-analytics ID here to activate google analytics
 google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
