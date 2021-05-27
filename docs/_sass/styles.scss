@@ -1,2 +1,23 @@
 // Import Core Clean Blog SCSS
 @import "../assets/vendor/startbootstrap-clean-blog/scss/styles.scss";
+
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.columns > * {
+  //ideal size
+  flex-basis: calc(calc(35em - 100%) * 999);
+  //allow to shrink
+  flex-shrink: 1;
+  //allow to grow
+  flex-grow: 1;
+}
+
+.card-body > :is(.card-title) {
+  color: gray;
+  text-align: center;
+}
