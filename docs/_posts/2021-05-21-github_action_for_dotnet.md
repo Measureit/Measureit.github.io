@@ -68,7 +68,7 @@ Let's get started by creating simple workflow script and describing in details w
 First line should contains **``name``** of workflow and it is optional. I strongly recommend include this line because it'll increas script readability (Github will attach this name into pipeline visualization).
 
 ```bash
-1. name: <workflow_name>
+name: <workflow_name>
 ```
 
 Next important part is **``on``** keyword and it define workflow triggers. There are definitions of rules for triggering execution in this section. 
