@@ -105,7 +105,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build -c Release
       working-directory: {% raw %} ${{env.working-directory}} {% endraw %} 
 ```
 
@@ -134,10 +134,12 @@ Now we know basics how Github actions works. Let's try build useful workflows fo
 I would like to split my automation process for 3 main blocks. Blocks definition will be put into separate files in **.github\workflows** directory.
 
 *   **continouse-integration.yaml**
-    > Trigger: push on master or develop
+    > Trigger: push or pull request on master or develop
     >
     > Motivation: build and test source code
 *   **code-analysis.yaml**
+    > Trigger: push or pull request on master
+    >
     > Trigger: cron job on master
     >
     > Motivation: generate code quality metrics
@@ -151,7 +153,7 @@ I would like to split my automation process for 3 main blocks. Blocks definition
 
 ## 4. Continouse integration workflow
 
-Main aim of this script is build and test our source code. This workflow is triggered by **push** or **pull request** on develop or master branches. I would like to avoid waisting resources so I decided use keyword **``paths-ignore``** to exclude workflow execution for ``**.md`` files changes. 
+Main aim of this script is build and test our source code. This workflow is triggered by **push** or **pull request** on branches develop or master. I would like to avoid waisting resources so I decided use keyword **``paths-ignore``** to exclude workflow execution for ``**.md`` files changes. 
 
 Workflow use latest ubuntu runner. There is possibility to define some workfow constants in **``env``** section. I used it to set source code location. 
 
@@ -162,13 +164,13 @@ The key part of build job are 3 steps definition.
 - **Build** - execute dotnet build command in working directory
 {% include code-header.html %}
 ```bash
-dotnet build --configuration Release
+dotnet build -c Release
 ```
 
 - **Test** - execute dotnet test command in working directory. There is **--no-build** flag to avoid redundant build.
 {% include code-header.html %}
 ```bash
-dotnet test --configuration Release --no-build
+dotnet test -c Release --no-build
 ```
 
 {% include code-header.html %}
@@ -198,11 +200,11 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build -c Release
       working-directory: {% raw %} ${{env.working-directory}} {% endraw %}
 
     - name: Test
-      run: dotnet test --configuration Release --no-build
+      run: dotnet test -c Release --no-build
       working-directory: {% raw %} ${{env.working-directory}} {% endraw %}
 ```
 <span class="caption text-muted">The entire **continouse integration workflow**</span>
@@ -212,7 +214,7 @@ jobs:
 
 ## 4. Code analisis workflow
 
-Aim of this script is apply quality gate for C# projects. This workflow is triggered by **push**, **pull request**, **scheduled** as a cron job.
+Aim of this script is apply quality gate for C# projects. This workflow is triggered by **push**, **pull request** or **scheduled** as a cron job.
 
 Workflow use latest ubuntu runner and a lot of predefined actions containing [CodeQL](https://securitylab.github.com/tools/codeql/) tool. Important part is configure project language to execute right analyze.
 
@@ -320,7 +322,7 @@ To generate nuget packages (****.nupkg**) dotnet project file should looks like 
 
 {% include code-header.html %}
 ```bash
-dotnet test --configuration Release /p:Version=${VERSION} --no-build
+dotnet test -c Release /p:Version=${VERSION} --no-build
 ```
 
 - **Push nuget** - push packages into NuGet instance
@@ -363,7 +365,7 @@ jobs:
       working-directory: {% raw %} ${{env.working-directory}} {% endraw %}
       
     - name: Test
-      run: dotnet test --configuration Release /p:Version=${VERSION} --no-build
+      run: dotnet test -c Release /p:Version=${VERSION} --no-build
       working-directory: {% raw %}${{env.working-directory}}  {% endraw %}
       
     - name: Push nuget
