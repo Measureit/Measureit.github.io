@@ -281,7 +281,7 @@ Workflow use latest ubuntu runner.
 Let's go through steps definition.
 - **Checkout** - use predefined action **actions/checkout@v2** to checkout triggered git commit
 
-- **Setup dotnet** - use predefined action **actions/setup-dotnet@v1** to setup dotnet environment **``with``** version ``5.0.100-rc.1.20452.10``
+- **Setup dotnet** - use predefined action **actions/setup-dotnet@v1** to setup dotnet environment **``with``** version `'5.0.x'`
 
 - **Set VERSION variable from tag** - read version number from git tag and set it as variable
 
@@ -301,7 +301,6 @@ To generate nuget packages (****.nupkg**) dotnet project file should looks like 
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Middlink.Core</PackageId>
-    <Version>1.1.3.2</Version>
     <Authors>Jarosław Kurdzieko</Authors>
     <Owners>Measureit</Owners>
     <ProjectUrl>http://measureit.pl</ProjectUrl>
@@ -355,7 +354,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.100-rc.1.20452.10'
+        dotnet-version: '5.0.x'
         
     - name: Set VERSION variable from tag
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
