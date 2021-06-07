@@ -2,13 +2,12 @@
 layout: fullpage
 title: Products
 description: List of products.
-background: "/img/bg-contact.jpg"
 ---
 
 <div class="container">
   <div class="columns">
       <div class="card" >
-        <img class="card-img-top" src="/img/bg-contact.jpg" alt="Middlink">
+        <div class="card-header" style="background-color: #9a8511; min-height: 4rem;"></div>
         <div class="card-body">
           <h5 class="card-title">Middlink</h5>
           <p>Do You need make your software more separated and decoupled? Middlink is library to introduce CQRS pattern to your software. Click button below and check this framework.</p>
@@ -16,7 +15,7 @@ background: "/img/bg-contact.jpg"
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="/img/bg-contact.jpg" alt="Stamp Warriors">
+        <div class="card-header" style="background-color: green; min-height: 4rem;"></div>
         <div class="card-body">
           <h5 class="card-title">Stamp Warriors</h5>
           <p class="small-12 text-center columns">Mobile app for orienteering.</p>
@@ -24,7 +23,7 @@ background: "/img/bg-contact.jpg"
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="/img/bg-contact.jpg" alt="Middlink">
+        <div class="card-header" style="background-color: #30308c; min-height: 4rem;"></div>
         <div class="card-body">
           <h5 class="card-title">SpLive</h5>
           <p class="small-12 text-center columns">System to management football academy.</p>

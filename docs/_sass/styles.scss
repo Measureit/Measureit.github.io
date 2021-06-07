@@ -3,6 +3,10 @@
 @import "./code-header.scss";
 @import "./syntax.scss";
 
+header.masthead{
+  background-color:#2c5d88;
+}
+
 .columns {
   display: flex;
   flex-wrap: wrap;

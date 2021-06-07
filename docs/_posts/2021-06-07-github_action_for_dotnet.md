@@ -212,7 +212,7 @@ jobs:
 
 <div id='id-code-analisis-workflow'/>
 
-## 4. Code analisis workflow
+## 5. Code analisis workflow
 
 Aim of this script is apply quality gate for C# projects. This workflow is triggered by **push**, **pull request** or **scheduled** as a cron job.
 
@@ -272,7 +272,7 @@ After first execution we can observe analyze results in GitHub repository webpag
 
 <div id='id-publish-workflow'/>
 
-## 5. Publish workflow
+## 6. Publish workflow
 
 Last workflow responsibility is publish .net library on [NuGet](https://www.nuget.org/). To avoid accidental publishing, the workflow is triggered to push a tag that match the version pattern (e.g. **v.1.4.1**).
 
@@ -385,7 +385,7 @@ jobs:
 
 <div id='id-summary'/>
 
-## 6. Summary
+## 7. Summary
 
 GitHub actions are powerful tool to automate software process. There is a lot of possibilities to improve you workflow by using exisitng templates and shared GitHub community actions.  I strongly recommend drill down this solution and rate it yourself.
 

@@ -1,12 +1,11 @@
 ---
 layout: page
 title: Contact Me
-description: Have questions? I have answers.
-background: '/img/bg-contact.jpg'
+description: Have questions? Maybe I can help You!
 form: true
 ---
 
-<p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
+Fill out the form below to send me a message and I will get back to You as soon as possible!
 <form name="sentMessage" id="contactForm" novalidate action="https://script.google.com/macros/s/AKfycbxOhlfqGXdbcLVvfbGzjVSNzm2RpjfEBVcRfmzdqaXjJU-6hVSqR5nsP1daGqrTPXMqZg/exec" method="POST">
   <div class="control-group">
     <div class="form-group floating-label-form-group controls">
