@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Github actions for .net library"
-subtitle: "Automate your software process with Github"
-date: 2021-05-21 10:45:13 -0400
+title: "GitHub actions for .net library"
+subtitle: "Automate your software process with GitHub"
+date: 2021-06-07 08:00:00 -0400
 background: "/img/posts/devops/devops.jpg"
 ---
 
 ## Motivation
-In this post, I would like to share knowledge about building software workflows for .net library. Few months ago I decided to publicly release my **dotnet library [Middlink](https://github.com/Measureit/Middlink)** by using Github actions. So far my all private projects was hosted in GitLab and it's time to use something else.
+In this post, I would like to share knowledge about building software workflows for .net library. Few months ago I decided to publicly release my **dotnet library [Middlink](https://github.com/Measureit/Middlink)** by using GitHub actions. So far my all private projects was hosted in GitLab and it's time to use something else.
 
 I always try touch few different solutions to grab some experience and grow as a software developer. This approach help changing the perspective during solving problems and increases decision-making.
 
@@ -38,7 +38,7 @@ We can use GitHub actions to handle such a task like:
 
  ... and much more.
 
-There are two possibilities to start using Github actions in new repository.
+There are two possibilities to start using GitHub actions in new repository.
 
 - **From the template**
   - go to web page https://github.com
@@ -47,15 +47,15 @@ There are two possibilities to start using Github actions in new repository.
   - choose workflow template
   - commit workflow script into destination branch
 
-<img class="img-fluid" src="/img/posts/2021-05-21-github_action_for_dotnet/github_actions.PNG" alt="Actions tab">
-<span class="caption text-muted">Github actions tab</span>
+<img class="img-fluid" src="/img/posts/2021-06-07-github_action_for_dotnet/github_actions.PNG" alt="Actions tab">
+<span class="caption text-muted">GitHub actions tab</span>
 
 - **From the scratch**
   - clone repository
   - create directory **.github\workflows** in project root
   - create ``<workflow_name>.YAML`` file with workflow definition in directory .github\workflow
 
-<img class="img-fluid" src="/img/posts/2021-05-21-github_action_for_dotnet/middlink_workflows.PNG" alt="Workflows structure for sample project">
+<img class="img-fluid" src="/img/posts/2021-06-07-github_action_for_dotnet/middlink_workflows.PNG" alt="Workflows structure for sample project">
 <span class="caption text-muted">Workflows structure for sample project</span>
 
 <div id='id-script-structure'/>
@@ -65,7 +65,7 @@ There are two possibilities to start using Github actions in new repository.
 
 Let's get started by creating simple workflow script and describing in details what this **magic lines** means.
 
-First line should contains **``name``** of workflow and it is optional. I strongly recommend include this line because it'll increas script readability (Github will attach this name into pipeline visualization).
+First line should contains **``name``** of workflow and it is optional. I strongly recommend include this line because it'll increas script readability (GitHub will attach this name into pipeline visualization).
 
 ```bash
 name: <workflow_name>
@@ -110,7 +110,7 @@ jobs:
 ```
 
 Job definition starts by set **``runs-on``** where runner is define. 
-We can use Github hosted runner:
+We can use GitHub hosted runner:
 - Windows
 - Ubuntu Linux
 - macOS
@@ -119,7 +119,7 @@ We can use Github hosted runner:
 
 A job contains list of sequential steps. Main **``steps``** responsibility is configure runner and execute commands. 
 
-Github actions have mechanism named **actions** to define combination of predefined commands which arm runtime with necessary tools and tasks. To apply predefined runtime configuration we have to use **``use``** keyword. 
+GitHub actions have mechanism named **actions** to define combination of predefined commands which arm runtime with necessary tools and tasks. To apply predefined runtime configuration we have to use **``use``** keyword. 
 
 Our sample step uses the **actions/checkout@v2** provided by GitHub community and it handle checkout commit which triggered workflow. 
 
@@ -129,7 +129,7 @@ There is possibility to parameterized actions mechanism by using keyword **``wit
 
 ## 3. Workflows directory
 
-Now we know basics how Github actions works. Let's try build useful workflows for .net library.
+Now we know basics how GitHub actions works. Let's try build useful workflows for .net library.
 
 I would like to split my automation process for 3 main blocks. Blocks definition will be put into separate files in **.github\workflows** directory.
 
@@ -264,9 +264,9 @@ jobs:
 ```
 <span class="caption text-muted">The entire **Code analisis workflow**</span>
 
-After first execution we can observe analyze results in Github repository webpage and start improve code quality.
+After first execution we can observe analyze results in GitHub repository webpage and start improve code quality.
 
-<img class="img-fluid" src="/img/posts/2021-05-21-github_action_for_dotnet/middlink_alerts.PNG" alt="Code analisis alerts">
+<img class="img-fluid" src="/img/posts/2021-06-07-github_action_for_dotnet/middlink_alerts.PNG" alt="Code analisis alerts">
 <span class="caption text-muted">Alerts after code analisis</span>
 
 
@@ -387,12 +387,12 @@ jobs:
 
 ## 6. Summary
 
-Github actions are powerful tool to automate software process. There is a lot of possibilities to improve you workflow by using exisitng templates and shared GitHub community actions.  I strongly recommend drill down this solution and rate it yourself.
+GitHub actions are powerful tool to automate software process. There is a lot of possibilities to improve you workflow by using exisitng templates and shared GitHub community actions.  I strongly recommend drill down this solution and rate it yourself.
 
-<img class="img-fluid" src="/img/posts/2021-05-21-github_action_for_dotnet/middlink_release.PNG" alt="Release .net library">
+<img class="img-fluid" src="/img/posts/2021-06-07-github_action_for_dotnet/middlink_release.PNG" alt="Release .net library">
 <span class="caption text-muted">Release .net library</span>
 
-**I am thinking about my own roslyn code analyzer inside shared Github actions.**
+**I am thinking about my own roslyn code analyzer inside shared GitHub actions.**
 
 
 #### Links
