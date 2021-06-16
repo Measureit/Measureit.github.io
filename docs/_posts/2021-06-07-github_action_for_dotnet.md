@@ -129,7 +129,7 @@ It is possible to parametrize the actions mechanism using keyword **``with``**. 
 
 ## 3. Workflows directory
 
-Now we know have the basics of how GitHub actions work. Let's try to build useful workflows for .net library.
+Now we have the basics of how GitHub actions work. Let's try to build useful workflows for .net library.
 
 I would like to split my automation process into three main blocks. Blocks definition will be put in separate files in **.github\workflows** directory.
 
