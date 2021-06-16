@@ -7,9 +7,9 @@ background: "/img/posts/devops/devops.jpg"
 ---
 
 ## Motivation
-In this post, I would like to share knowledge about building software workflows for .net library. Few months ago I decided to publicly release my **dotnet library [Middlink](https://github.com/Measureit/Middlink)** by using GitHub actions. So far my all private projects was hosted in GitLab and it's time to use something else.
+In this post, I would like to share knowledge about building software workflows for .net library. Few months ago I decided to publicly release my **dotnet library [Middlink](https://github.com/Measureit/Middlink)** by using GitHub actions. So far my all private projects have been hosted in GitLab and it's time to go for something new.
 
-I always try touch few different solutions to grab some experience and grow as a software developer. This approach help changing the perspective during solving problems and increases decision-making.
+I have a habit of always trying out different solutions to gain more experience and grow as a software developer. This approach helps me keep a flexible perspective when solving problems, increases my creativity and confidence in decision-making.
 
 ## Table of contents
 
@@ -25,9 +25,9 @@ I always try touch few different solutions to grab some experience and grow as a
 
 ## 1. Introduction
 
-GitHub actions are a **free mechanism** to create software automation by using YAML (Yet Another Markup Language) scripts. It’s possible to build complex automated processes from many workflows scripts containing many jobs containing many steps. This combination definitely helps to orchestrate tasks and it makes the whole process becomes more understandable. 
+GitHub actions are a **free mechanism** for automating software workflows with the use of YAML (Yet Another Markup Language) scripts. It enables the creation of complex automated processes from many workflow scripts which contain numerous jobs that involve multiple steps. This combination definitely helps to orchestrate tasks and makes the whole process more understandable.
 
-We can use GitHub actions to handle such a task like:
+GitHub actions can be used to handle the following tasks:
   
   - **build source code**
   - **run tests**
@@ -36,9 +36,9 @@ We can use GitHub actions to handle such a task like:
   - **publish artifacts**
   - **release notification**
 
- ... and much more.
+ ... and many more.
 
-There are two possibilities to start using GitHub actions in new repository.
+There are two ways to start using GitHub actions in a new repository.
 
 - **From the template**
   - go to web page https://github.com
@@ -63,19 +63,19 @@ There are two possibilities to start using GitHub actions in new repository.
 ## 2. Script structure
 
 
-Let's get started by creating simple workflow script and describing in details what this **magic lines** means.
+Let's start by creating a simple workflow script and describing in detail what these **magic lines** mean.
 
-First line should contains **``name``** of workflow and it is optional. I strongly recommend include this line because it'll increas script readability (GitHub will attach this name into pipeline visualization).
+The first line should contain the **``name``** of the workflow and is optional. I strongly recommend including this line because it will enhance script readability (GitHub will attach this name into pipeline visualization).
 
 ```bash
 name: <workflow_name>
 ```
 
-Next important part is **``on``** keyword and it define workflow triggers. There are definitions of rules for triggering execution in this section. 
-Triggers can be activate by:
+The next important part is **``on``** keyword, which defines workflow triggers. This section contains definitions of rules for triggering execution. 
+Triggers can be activated by:
 - GitHub events
 - scheduled time
-- outside events
+- external events
 
 ```bash
 on:
@@ -110,28 +110,28 @@ jobs:
 ```
 
 Job definition starts by set **``runs-on``** where runner is define. 
-We can use GitHub hosted runner:
+We can use the following GitHub hosted runner:
 - Windows
 - Ubuntu Linux
 - macOS
 
 ... or create our own VM for running jobs.
 
-A job contains list of sequential steps. Main **``steps``** responsibility is configure runner and execute commands. 
+A job contains a list of sequential steps. The main responsibility of **``steps``** is to configure runner and execute commands. 
 
-GitHub actions have mechanism named **actions** to define combination of predefined commands which arm runtime with necessary tools and tasks. To apply predefined runtime configuration we have to use **``use``** keyword. 
+GitHub actions have a mechanism named **actions** for defining the combination of predefined commands which provide runtime with necessary tools and tasks. To apply predefined runtime configuration we need to use **``use``** keyword.  
 
 Our sample step uses the **actions/checkout@v2** provided by GitHub community and it handle checkout commit which triggered workflow. 
 
-There is possibility to parameterized actions mechanism by using keyword **``with``**. You can create your own actions, or use and customize actions shared by the GitHub community. [Take a look on shared actions.](https://github.com/marketplace?type=actions) 
+It is possible to parametrize the actions mechanism using keyword **``with``**. You can create your own actions, or customize actions shared by the GitHub community. [Take a look on shared actions.](https://github.com/marketplace?type=actions) 
 
 <div id='id-workflows-directory'/>
 
 ## 3. Workflows directory
 
-Now we know basics how GitHub actions works. Let's try build useful workflows for .net library.
+Now we know have the basics of how GitHub actions work. Let's try to build useful workflows for .net library.
 
-I would like to split my automation process for 3 main blocks. Blocks definition will be put into separate files in **.github\workflows** directory.
+I would like to split my automation process into three main blocks. Blocks definition will be put in separate files in **.github\workflows** directory.
 
 *   **continouse-integration.yaml**
     > Trigger: push or pull request on master or develop
@@ -153,12 +153,12 @@ I would like to split my automation process for 3 main blocks. Blocks definition
 
 ## 4. Continouse integration workflow
 
-Main aim of this script is build and test our source code. This workflow is triggered by **push** or **pull request** on branches develop or master. I would like to avoid waisting resources so I decided use keyword **``paths-ignore``** to exclude workflow execution for ``**.md`` files changes. 
+The main aim of this script is to build and test our source code. This workflow is triggered by **push** or **pull request** on develop or master branches. I would like to avoid wasting resources so I decided to use keyword **``paths-ignore``** to exclude workflow execution for ``**.md`` files changes. 
 
-Workflow use latest ubuntu runner. There is possibility to define some workfow constants in **``env``** section. I used it to set source code location. 
+Workflow uses the latest ubuntu runner. It is possible to define some workfow constants in **``env``** section. I used it to set the source code location. 
 
 
-The key part of build job are 3 steps definition.
+The key part of the build job is to define the following three steps:
 - **Checkout** -  use predefined action **actions/checkout@v2** to checkout triggered git commit
 
 - **Build** - execute dotnet build command in working directory
@@ -214,9 +214,9 @@ jobs:
 
 ## 5. Code analisis workflow
 
-Aim of this script is apply quality gate for C# projects. This workflow is triggered by **push**, **pull request** or **scheduled** as a cron job.
+The aim of this script is to apply quality gate for C# projects. This workflow is triggered by **push**, **pull request** or **scheduled** as a cron job.
 
-Workflow use latest ubuntu runner and a lot of predefined actions containing [CodeQL](https://securitylab.github.com/tools/codeql/) tool. Important part is configure project language to execute right analyze.
+The workflow uses the latest ubuntu runner and many predefined actions containing [CodeQL](https://securitylab.github.com/tools/codeql/) tool. It is important to configure the project language to enable the right analysis.
 
 {% include code-header.html %}
 ```bash
@@ -264,7 +264,7 @@ jobs:
 ```
 <span class="caption text-muted">The entire **Code analisis workflow**</span>
 
-After first execution we can observe analyze results in GitHub repository webpage and start improve code quality.
+After the first execution we can observe analysis results on GitHub repository webpage, and then proceed to improve code quality.
 
 <img class="img-fluid" src="/img/posts/2021-06-07-github_action_for_dotnet/middlink_alerts.PNG" alt="Code analisis alerts">
 <span class="caption text-muted">Alerts after code analisis</span>
@@ -274,9 +274,9 @@ After first execution we can observe analyze results in GitHub repository webpag
 
 ## 6. Publish workflow
 
-Last workflow responsibility is publish .net library on [NuGet](https://www.nuget.org/). To avoid accidental publishing, the workflow is triggered to push a tag that match the version pattern (e.g. **v.1.4.1**).
+The last workflow responsibility is publish .net library on [NuGet](https://www.nuget.org/). To avoid accidental publishing, the workflow is triggered by pushing a tag that matches the version pattern (e.g. **v.1.4.1**).
 
-Workflow use latest ubuntu runner.
+The workflow uses the latest ubuntu runner.
 
 Let's go through steps definition.
 - **Checkout** - use predefined action **actions/checkout@v2** to checkout triggered git commit
@@ -285,14 +285,14 @@ Let's go through steps definition.
 
 - **Set VERSION variable from tag** - read version number from git tag and set it as variable
 
-- **Build** - execute dotnet publish command with version number read from git tag
+- **Build** - execute dotnet publish command with version number retrieved from git tag
 
 {% include code-header.html %}
 ```bash
 dotnet publish -c Release /p:Version=${VERSION}
 ```
 
-To generate nuget packages (****.nupkg**) dotnet project file should looks like this.
+This command will generate NuGet package (****.nupkg**) when dotnet project file is defined as follows:
 
 {% include code-header.html %}
 ```csharp
@@ -317,7 +317,7 @@ To generate nuget packages (****.nupkg**) dotnet project file should looks like 
 </Project>
 ```
 
-- **Test** - execute dotnet test command with version number read from git tag. There is **--no-build** flag to avoid redundant build.
+- **Test** - execute dotnet test command with version number retrieved from git tag. There is **--no-build** flag to avoid redundant build.
 
 {% include code-header.html %}
 ```bash
@@ -387,7 +387,7 @@ jobs:
 
 ## 7. Summary
 
-GitHub actions are powerful tool to automate software process. There is a lot of possibilities to improve you workflow by using exisitng templates and shared GitHub community actions.  I strongly recommend drill down this solution and rate it yourself.
+GitHub actions are a powerful tool for automating software processes. There is a lot of possibilities to improve your workflow by using existing templates and shared GitHub community actions.  I strongly recommend testing this solution and rate it yourself.
 
 <img class="img-fluid" src="/img/posts/2021-06-07-github_action_for_dotnet/middlink_release.PNG" alt="Release .net library">
 <span class="caption text-muted">Release .net library</span>
