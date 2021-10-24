@@ -3,7 +3,6 @@ layout: fullpage
 title: Products
 description: List of products.
 ---
-
 <div class="container">
   <div class="columns">
       <div class="card" >
